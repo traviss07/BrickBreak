@@ -98,7 +98,7 @@ public class BrickBreak extends JPanel implements KeyListener, ActionListener {
 		ball.draw(g);
 		
 		//check for game over
-		if (ball.getYpos() > 570) {
+		if (ball.getYPos() > 570) {
 			play = false;
 			g.setColor(Color.red);
 			g.setFont(new Font("serif", Font.BOLD, 30));
@@ -122,7 +122,7 @@ public class BrickBreak extends JPanel implements KeyListener, ActionListener {
 	//postcondition: detects collision between the ball and other surfaces and changes the ball's direction accordingly.
 	private void checkCollision() {
 
-		Rectangle ballHitBox = new Rectangle(ball.getXpos(), ball.getYpos(), ball.getSize(), ball.getSize());
+		Rectangle ballHitBox = new Rectangle(ball.getXPos(), ball.getYPos(), ball.getSize(), ball.getSize());
 		Rectangle playerHitBox = new Rectangle(player.getX(), player.getY(), player.getWidth(), player.getHeight());
 		
 		// paddle collision
@@ -145,10 +145,10 @@ public class BrickBreak extends JPanel implements KeyListener, ActionListener {
 					if (ballHitBox.intersects(brickHitBox)) {
 						map[i][j].hit();
 						score++;
-						if (ball.getXpos() + ball.getSize() <= map[i][j].getX()) {
+						if (ball.getXPos() + ball.getSize() <= map[i][j].getX()) {
 							ball.setX(map[i][j].getX()-ball.getSize() -1);
 							ball.reverseX();
-						} else if(ball.getXpos() + 1 >= map[i][j].getX() + map[i][j].getWidth()) {
+						} else if(ball.getXPos() + 1 >= map[i][j].getX() + map[i][j].getWidth()) {
 							ball.setX(map[i][j].getX()+map[i][j].getWidth() +1);
 							ball.reverseX();
 						}else {
@@ -167,11 +167,11 @@ public class BrickBreak extends JPanel implements KeyListener, ActionListener {
 		}
 
 		// wall collision
-		if (ball.getXpos() < 0 || ball.getXpos()+ball.getSize() > 682) {
+		if (ball.getXPos() < 0 || ball.getXPos()+ball.getSize() > 682) {
 			ball.reverseX();
 		}
 		
-		if (ball.getYpos() < 0) {
+		if (ball.getYPos() < 0) {
 			ball.reverseY();
 		}
 
