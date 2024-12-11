@@ -1,5 +1,13 @@
 import java.awt.*;
 
+//
+//  Class author:  Travis Schultz
+//  Date created:  December 4, 2024
+//  General description: Contains the code that makes the ball component in the brickbreak game function, 
+// 	mainly the movement function of the ball and how the ball behaves when it is controlled. The ball's movement
+//  is generally based off of collisions with bricks or paddles, with these methods being used in BrickBreak.java
+//  The ball has range of motion on both the x and y axis.
+//
 
 public class Ball {
 	//your code here!
@@ -22,7 +30,6 @@ public class Ball {
 		this.size = size;
 	}
 	//methods:
-	// ** DONT KNOW WHAT TO DO ABOUT DRAW, REVERSE, MOVE, WHY ARE GETTERS NOT WORKING??? **
 	//getters:
 	public void draw(Graphics g){
 		g.setColor(Color.white);
@@ -64,10 +71,19 @@ public class Ball {
 	}
 	
 	//others
+
+	//
+	//  Pre-condition: xVelocity must be an integer and cannot be zero as the method wouldn't do anything
+	//  Post-condition: the xVelocity changing from positive to negative or vice versa
+	//
 	public void reverseX(){
 		this.xVelocity = xVelocity * -1;
 	}
 
+	//
+	//  Pre-condition: yVelocity must be an integer and cannot be zero as the method wouldn't do anything.
+	//  Post-condition: the yVelocity changes from positive to negative or vice versa
+	//
 	public void reverseY(){
 		this.yVelocity = yVelocity * -1;
 	}

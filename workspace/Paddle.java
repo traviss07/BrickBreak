@@ -1,5 +1,13 @@
-import java.awt.Graphics;
 import java.awt.*;
+
+//
+//  Class author:  Travis Schultz
+//  Date created:  December 4, 2024
+//  General description: Contains the code that makes the 'paddle' component in the brickbreak game function,
+//  including the movement function of the paddle and it having collisions for the ball to bounce off of,
+//  with these methods being used to create function in BrickBreak.java
+//  The paddle has range of motion on the X axis only.
+//
 
 public class Paddle {
 
@@ -13,7 +21,7 @@ public class Paddle {
 	private int height;
 	private int velocity;
 
-	//constructor(s): ** IS THIS RIGHT?? IDK**
+	//constructor(s): 
 	public Paddle(int x, int y, int width, int height){
 		this.x = x;
 		this.y = y;
@@ -21,17 +29,8 @@ public class Paddle {
 		this.height = height;
 		this.velocity = 5;
 	}
-	// ** DON'T KNOW WHAT TO DO WITH DRAW, MOVE, ADDVELOCITY
 	//methods:
-	public void draw(Graphics g){
-		g.setColor(Color.red);
-		g.fillRect(x, y, width, height);
-	}
-
-	public void move(){
-		this.x += velocity;
-	}
-
+	//getters
 	public int getX(){
 		return x;
 	}
@@ -62,6 +61,11 @@ public class Paddle {
 	}
 
 	//others
+	//
+	//  Pre-condition: v must be an integer
+	//  Post-condition: the velocity will change (be increased or decreased) by the amount v, 
+	//  if velocity results in a value greater than 8 or less than -8 its value is updated to the minimum or maximum
+	//
 	public void addVelocity(int v){
 		this.velocity += v;
 		if(velocity > 8)
@@ -69,4 +73,22 @@ public class Paddle {
 		if(velocity < -8)
 		velocity = -8;
 	}
+
+	//
+	//  Pre-condition: g must be of the type graphics.
+	//  Post-condition: the g object will become red and create a rectangle
+	//
+	public void draw(Graphics g){
+		g.setColor(Color.red);
+		g.fillRect(x, y, width, height);
+	}
+
+	//
+	//  Pre-condition: there is no input, the object this is ran with must have a velocity and an x value
+	//  Post-condition: the object's x value will increased by its current velocity, appearing as movement
+	//
+	public void move(){
+		this.x += velocity;
+	}
+	
 }
